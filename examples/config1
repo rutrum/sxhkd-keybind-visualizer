@@ -1,0 +1,172 @@
+#
+# wm independent hotkeys
+#
+
+# terminal emulator
+alt + Return
+        alacritty
+
+# program launcher
+alt + d
+        rofi -show run -theme theme
+
+# make sxhkd reload its configuration files:
+alt + Escape
+        pkill -USR1 -x sxhkd
+
+#
+# bspwm hotkeys
+#
+
+# quit/restart bspwm
+alt + shift + e
+        bspc quit
+
+alt + shift + r
+        bspc wm -r
+
+# close and kill
+
+alt + shift + q
+        bspc node -c
+
+# alternate between the tiled and monocle layout
+# alt + m
+#       bspc desktop -l next
+
+# swap the current node and the biggest node
+alt + g
+        bspc node -s biggest.local
+
+# Fullscreen mode
+alt + f
+        bspc node -t ~\fullscreen 
+
+#
+# state/flags
+#
+
+# set the window state
+alt + {t,shift + t,s,f}
+        bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# set the node flags
+alt + ctrl + {m,x,y,z}
+        bspc node -g {marked,locked,sticky,private}
+
+#
+# focus/swap
+#
+
+alt + shift + p
+        scrot
+# focus the node in the given direction
+alt + {_,shift + }{h,j,k,l}
+        bspc node -{f,s} {west,south,north,east}
+
+# Select nodes up and down the tree
+alt + semicolon
+        bspc node -f @parent
+
+alt + shift + semicolon
+        bspc node -f @first
+
+# Rotate node
+alt + slash
+        bspc node -R 90
+
+# focus the next/previous node in the current desktop
+alt + {_,shift + }c
+        bspc node -f {next,prev}.local
+
+# focus the next/previous desktop in the current monitor
+alt + bracket{left,right}
+        bspc desktop -f {prev,next}.local
+
+# focus the last node/desktop
+alt + {grave,Tab}
+        bspc {node,desktop} -f last
+
+# focus or send to the given desktop
+alt + {_,shift + }{1-9,0}
+        bspc {desktop -f,node -d} '^{1-9,10}'
+
+#
+# preselect
+#
+
+# preselect the direction
+alt + ctrl + {h,j,k,l}
+        bspc node -p {west,south,north,east}
+
+# preselect the ratio
+alt + ctrl + {1-9}
+        bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+alt + ctrl + space
+        bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+alt + ctrl + shift + space
+        bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+#
+# move/resize
+#
+
+alt + n
+        bspc node -z left -100 0; bspc node -z right -100 0
+alt + shift + n
+        bspc node -z left -20 0; bspc node -z right -20 0
+alt + m
+        bspc node -z bottom 0 100; bspc node -z top 0 100
+alt + shift + m
+        bspc node -z bottom 0 20; bspc node -z top 0 20
+alt + comma
+        bspc node -z top 0 -100; bspc node -z bottom 0 -100
+alt + shift + comma
+        bspc node -z top 0 -20; bspc node -z bottom 0 -20
+alt + period
+        bspc node -z right 100 0; bspc node -z left 100 0
+alt + shift + period
+        bspc node -z right 20 0; bspc node -z left 20 0
+
+# expand a window by moving one of its side outward
+# alt + {n,m,comma,period}
+#       bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}; bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# contract a window by moving one of its side inward
+# alt + alt + shift + {h,j,k,l}
+#       bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# move a floating window
+# alt + {Left,Down,Up,Right}
+#       bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# Other bindings from i3
+
+# Music and volume controls
+alt + y
+        cmus-remote -u
+alt + u
+        /home/rutrum/dotfiles/bin/volume "-"
+alt + i
+        /home/rutrum/dotfiles/bin/volume +
+alt + o
+        cmus-remote -r
+alt + p
+        cmus-remote -n
+
+# Brightness controls
+XF86MonBrightnessUp
+        xbacklight -inc 3
+XF86MonBrightnessDown
+        xbacklight -dec 3
+
+# Print screen
+Print
+        scrot
+
+alt + b
+        /home/rutrum/dotfiles/bin/startzoom
