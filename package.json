@@ -1,0 +1,26 @@
+{
+  "name": "sxhkd-keybind-visualizer",
+  "version": "0.1.0",
+  "description": "",
+  "main": "createHTML.js",
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {
+    "ejs": "^3.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rutrum/sxhkd-keybind-visualizer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rutrum/sxhkd-keybind-visualizer/issues"
+  },
+  "homepage": "https://github.com/rutrum/sxhkd-keybind-visualizer#readme"
+}
