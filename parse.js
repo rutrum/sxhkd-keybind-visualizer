@@ -1,4 +1,25 @@
-function parse_file(contents) {
+const fs = require('fs')
+
+function main() {
+    let filename = process.env.HOME + "/.config/sxhkd/sxhkdrc"
+    if (process.argv.length > 2) {
+        filename = process.argv[2]
+    }
+    parse_file(filename, console.log)
+}
+
+function parse_file(filename, callback) {
+    fs.readFile(filename, "utf-8", (err, data) => {
+        if (err) {
+            console.log("Error opening file at " + file)
+            exit(1)
+        } else {
+            callback(parse_contents(data))
+        }
+    })
+}
+
+function parse_contents(contents) {
     let keycommands = {}
     let lines = contents.split("\n")
     lines = lines.filter(line => line.length > 0)
@@ -19,10 +40,10 @@ function parse_file(contents) {
     for (let [key, command] of Object.entries(expanded)) {
         let modifier = "none"
 
-        let plusindex = key.lastIndexOf(" + ");
+        let plusindex = key.lastIndexOf("+");
         if (plusindex != -1) {
-            modifier = key.substring(0, plusindex)
-            key = key.substring(plusindex + 3)
+            modifier = key.substring(0, plusindex).trim()
+            key = key.substring(plusindex + 1).trim()
         }
         if (!final[key]) {
             final[key] = {}
@@ -41,7 +62,7 @@ function break_apart(keycommands) {
 
         if (keyexpansion.length == commandexpansion.length) {
             for (let i = 0; i < keyexpansion.length; i++) {
-                let key = keyexpansion[i]
+                let key = keyexpansion[i].toUpperCase()
                 let command = commandexpansion[i]
                 expandedkeycommands[key] = command
             }
@@ -83,8 +104,4 @@ function expand_string(str) {
     }
 }
 
-const fs = require('fs')
-
-fs.readFile('./examples/config1', "utf-8", (err, data) => {
-    console.log(parse_file(data))
-})
+main()
