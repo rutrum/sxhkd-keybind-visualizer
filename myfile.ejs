@@ -1,0 +1,28 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html>
+
+<head>
+    <title>Keyboard</title>
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body>
+    <div>
+        <% console.log(rows) %>
+        <% rows.forEach( row => { %>
+        <div class="row">
+            <% row.forEach( letter => { %>
+            <% if(tooltips.hasOwnProperty(letter)){ %>
+                <button data-toggle="tooltip" title="<%= tooltips[letter]%>">
+            <% } else { %>
+                <button>
+            <% } %>
+                <%= letter %>
+            </button>
+            <% }) %>
+        </div>
+        <% }) %>
+    </div>
+</body>
