@@ -1,28 +1,54 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <html>
+<style>
+    button {
+        width: 50px;
+        height: 50px;
+    }
+
+    button.long {
+        width: 100px;
+    }
+</style>
 
 <head>
     <title>Keyboard</title>
     <link rel="stylesheet" type="text/css"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
 <body>
+    <script>
+        var tooltips = JSON.parse('<%- JSON.stringify(tooltips) %>')
+        function myMoveFunction(e) {
+            let hoveredLetter = e.innerHTML.trim()
+            let holder = document.getElementById("tooltipInfoDump")
+            console.log(holder)
+            let words = tooltips[hoveredLetter]
+            console.log(words)
+            holder.innerHTML = words
+            console.log("<%=JSON.stringify(tooltips)%>")
+        }
+    </script>
+    <h1>Simple X Hot Key Daemon Keyboard Visualization</h1>
     <div>
         <% console.log(rows) %>
         <% rows.forEach( row => { %>
         <div class="row">
             <% row.forEach( letter => { %>
+            <button  class="<%= (letter.length>=4) ? 'long' : 'normal'%>" 
             <% if(tooltips.hasOwnProperty(letter)){ %>
-                <button data-toggle="tooltip" title="<%= tooltips[letter]%>">
-            <% } else { %>
-                <button>
+                onmousemove="myMoveFunction(this)"
             <% } %>
+            >
                 <%= letter %>
             </button>
             <% }) %>
         </div>
         <% }) %>
+    </div>
+
+    <div id="tooltipInfoDump">
+
     </div>
 </body>

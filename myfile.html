@@ -1,100 +1,228 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <html>
+<style>
+    button {
+        width: 50px;
+        height: 50px;
+    }
+
+    button.long {
+        width: 100px;
+    }
+</style>
 
 <head>
     <title>Keyboard</title>
     <link rel="stylesheet" type="text/css"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
 <body>
+    <script>
+        var tooltips = JSON.parse('{"A":"Mute Discord","H":"Focus Left Window"}')
+        function myMoveFunction(e) {
+            let hoveredLetter = e.innerHTML.trim()
+            let holder = document.getElementById("tooltipInfoDump")
+            console.log(holder)
+            let words = tooltips[hoveredLetter]
+            console.log(words)
+            holder.innerHTML = words
+            console.log("{&#34;A&#34;:&#34;Mute Discord&#34;,&#34;H&#34;:&#34;Focus Left Window&#34;}")
+        }
+    </script>
+    <h1>Simple X Hot Key Daemon Keyboard Visualization</h1>
     <div>
         
         
         <div class="row">
             
+            <button  class="long" 
             
-                <button>
-            
-                ~
+            >
+                Escape
             </button>
             
+            <button  class="normal" 
             
-                <button>
+            >
+                F1
+            </button>
             
+            <button  class="normal" 
+            
+            >
+                F2
+            </button>
+            
+            <button  class="normal" 
+            
+            >
+                F3
+            </button>
+            
+            <button  class="normal" 
+            
+            >
+                F4
+            </button>
+            
+            <button  class="normal" 
+            
+            >
+                F5
+            </button>
+            
+            <button  class="normal" 
+            
+            >
+                F6
+            </button>
+            
+            <button  class="normal" 
+            
+            >
+                F7
+            </button>
+            
+            <button  class="normal" 
+            
+            >
+                F8
+            </button>
+            
+            <button  class="normal" 
+            
+            >
+                F9
+            </button>
+            
+            <button  class="normal" 
+            
+            >
+                F10
+            </button>
+            
+            <button  class="normal" 
+            
+            >
+                F11
+            </button>
+            
+            <button  class="normal" 
+            
+            >
+                F12
+            </button>
+            
+            <button  class="long" 
+            
+            >
+                Home
+            </button>
+            
+            <button  class="normal" 
+            
+            >
+                End
+            </button>
+            
+            <button  class="long" 
+            
+            >
+                Insert
+            </button>
+            
+            <button  class="long" 
+            
+            >
+                Delete
+            </button>
+            
+        </div>
+        
+        <div class="row">
+            
+            <button  class="normal" 
+            
+            >
+                `
+            </button>
+            
+            <button  class="normal" 
+            
+            >
                 1
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 2
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 3
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 4
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 5
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 6
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 7
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 8
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 9
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 0
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 -
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 =
             </button>
             
+            <button  class="long" 
             
-                <button>
-            
+            >
                 Backspace
             </button>
             
@@ -102,87 +230,87 @@
         
         <div class="row">
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 Tab
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 Q
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 W
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 E
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 R
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 T
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 Y
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 U
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 I
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 O
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 P
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 [
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 ]
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 \
             </button>
             
@@ -190,151 +318,155 @@
         
         <div class="row">
             
+            <button  class="long" 
             
-                <button>
-            
+            >
                 Caps
             </button>
             
+            <button  class="normal" 
             
-                <button data-toggle="tooltip" title="Mute Discord">
+                onmousemove="myMoveFunction(this)"
             
+            >
                 A
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 S
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 D
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 F
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 G
             </button>
             
+            <button  class="normal" 
             
-                <button data-toggle="tooltip" title="Focus Left Window">
+                onmousemove="myMoveFunction(this)"
             
+            >
                 H
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 J
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 K
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 L
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 ;
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 &#39;
             </button>
             
+            <button  class="long" 
             
-                <button>
-            
-                Enter
+            >
+                Return
             </button>
             
         </div>
         
         <div class="row">
             
+            <button  class="long" 
             
-                <button>
-            
+            >
                 Shift
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 Z
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 X
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 C
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 V
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 B
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 N
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 M
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 ,
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 .
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 /
             </button>
             
@@ -342,37 +474,41 @@
         
         <div class="row">
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 Fn
             </button>
             
+            <button  class="long" 
             
-                <button>
-            
+            >
                 Ctrl
             </button>
             
+            <button  class="long" 
             
-                <button>
-            
+            >
                 Super
             </button>
             
+            <button  class="normal" 
             
-                <button>
-            
+            >
                 Alt
             </button>
             
+            <button  class="long" 
             
-                <button>
-            
+            >
                 Space
             </button>
             
         </div>
         
+    </div>
+
+    <div id="tooltipInfoDump">
+
     </div>
 </body>
