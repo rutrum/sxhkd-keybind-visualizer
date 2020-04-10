@@ -20,6 +20,8 @@ function parse_file(filename, callback) {
 }
 
 function parse_contents(contents) {
+
+    // First read and clean file
     let keycommands = {}
     let lines = contents.split("\n")
     lines = lines.filter(line => line.length > 0)
@@ -34,8 +36,10 @@ function parse_contents(contents) {
         }
     })
 
+    // Expand the {} blocks
     expanded = break_apart(keycommands)
 
+    // Separate modifier from each command and create final data structure
     let final = {}
     let allmodifiers = new Set()
     for (let [key, command] of Object.entries(expanded)) {
@@ -58,6 +62,8 @@ function parse_contents(contents) {
     return { modifiers: allmodifiers, hotkeys: final }
 }
 
+// Given the source of the keybinds and commands, will create 
+// object[keybind]=>command with keybinds in their simplest state
 function break_apart(keycommands) {
     let expandedkeycommands = {}
     
@@ -76,6 +82,8 @@ function break_apart(keycommands) {
     return expandedkeycommands
 }
 
+// Takes either a key or command, expands the {} into
+// multiple keys or commands without {}
 function expand_string(str) {
     first = str.search("{")
     second = str.search("}")
