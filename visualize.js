@@ -1,4 +1,9 @@
 var fs = require('fs')
+var MODIFIERS = [
+    "SUPER", "HYPER", "META", "ALT", "CONTROL", "CTRL",
+    "SHIFT", "MODE_SWITCH", "LOCK", "MOD1", "MOD2",
+    "MOD3", "MOD4", "MOD5", "ANY"
+]
 
 // Opens file and begins to parse contents
 function main() {
@@ -30,7 +35,7 @@ function parse_contents(data) {
             source: keybind.source
         }
     })
-    return JSON.stringify(keyfinal["BRACKETLEFT"])
+    return JSON.stringify(keyfinal)
 }
 
 // Reads the raw data file and generates a list
@@ -149,12 +154,28 @@ class KeyBind {
         let plusindex = hotkey.lastIndexOf("+")
         let lastindex = colonindex > plusindex ? colonindex : plusindex;
         if (lastindex != -1) {
-            this.modifier = hotkey.substring(0, lastindex).trim()
+            let modifier = hotkey.substring(0, lastindex).trim()
+            this.modifier = this.clean_modifier(modifier)
             this.keysym = hotkey.substring(lastindex + 1).trim()
         } else {
             this.modifier = "NONE" 
             this.keysym = hotkey
         }
+    }
+
+    // Alphabetizes the modifiers
+    clean_modifier(modifier) {
+        return modifier.split(":").map(chord => {
+            let mods = chord.split("+")
+            if (mods[mods.length - 1] in MODIFIERS) {
+                return mods.sort().join("+")
+            } else {
+                let last = mods.pop()
+                let sorted = mods.sort()
+                sorted.push(last)
+                return sorted.join("+")
+            }
+        }).join(":")
     }
 }
 

@@ -1,22 +1,42 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <html>
-<style>
-    button {
-        width: 50px;
-        height: 50px;
-    }
-
-    button.long {
-        width: 100px;
-    }
-</style>
-
 <head>
     <title>Keyboard</title>
-    <link rel="stylesheet" type="text/css"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: "Open Sans", sans-serif;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .row:nth-of-type(3) {
+            margin-left: 21px;
+        }
+        .row:nth-of-type(4) {
+            margin-left: 28px;
+        }
+        .row:nth-of-type(5) {
+            margin-left: 42px;
+        }
+        .key {
+            font-size: 20px;
+            line-height: 40px;
+            height: 40px;
+            width: 40px;
+            overflow: hidden;
+            background-color: lightgrey;
+            margin: 1px;
+            text-align: center;
+        }
+        .key:hover {
+            background-color: whitesmoke;
+        }
+        .qu8 {
+            width: 82px;
+        }
+    </style>
 </head>
-
 <body>
     <script>
         var tooltips = JSON.parse('<%- JSON.stringify(tooltips) %>')
@@ -33,18 +53,18 @@
         }
     </script>
     <h1>Simple X Hot Key Daemon Keyboard Visualization</h1>
-    <div>
+    <div id="keyboard">
         <% console.log(rows) %>
         <% rows.forEach( row => { %>
         <div class="row">
             <% row.forEach( letter => { %>
-            <button  class="<%= (letter.length>=4) ? 'long' : 'normal'%>" 
+            <div class="key <%= (letter.length>=4) ? 'qu8' : 'normal'%>" 
             <% if(tooltips.hasOwnProperty(letter)){ %>
                 onmousemove="myMoveFunction(this)"
             <% } %>
             >
                 <%= letter %>
-            </button>
+            </div>
             <% }) %>
         </div>
         <% }) %>
@@ -54,3 +74,4 @@
 
     </div>
 </body>
+<html>

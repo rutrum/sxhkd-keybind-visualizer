@@ -1,22 +1,42 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <html>
-<style>
-    button {
-        width: 50px;
-        height: 50px;
-    }
-
-    button.long {
-        width: 100px;
-    }
-</style>
-
 <head>
     <title>Keyboard</title>
-    <link rel="stylesheet" type="text/css"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: "Open Sans", sans-serif;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .row:nth-of-type(3) {
+            margin-left: 21px;
+        }
+        .row:nth-of-type(4) {
+            margin-left: 28px;
+        }
+        .row:nth-of-type(5) {
+            margin-left: 42px;
+        }
+        .key {
+            font-size: 20px;
+            line-height: 40px;
+            height: 40px;
+            width: 40px;
+            overflow: hidden;
+            background-color: lightgrey;
+            margin: 1px;
+            text-align: center;
+        }
+        .key:hover {
+            background-color: whitesmoke;
+        }
+        .qu8 {
+            width: 82px;
+        }
+    </style>
 </head>
-
 <body>
     <script>
         var tooltips = JSON.parse('{"8":{"super":"bspc desktop -f 8","super + shift":"bspc node -d 8","super + ctrl":"bspc node -o 0.8"},"9":{"super":"bspc desktop -f 9","super + shift":"bspc node -d 9","super + ctrl":"bspc node -o 0.9"},"f":{"control + alt":"~/dotfiles/screenlayouts/148.sh","super":"bspc node -t ~fullscreen"},"g":{"control + alt":"~/dotfiles/screenlayouts/laptop.sh","super":"bspc node -s biggest"},"t":{"control + alt":"~/dotfiles/screenlayouts/homethree.sh","super":"bspc node -t tiled","super + shift":"bspc node -t pseudo_tiled"},"M":{"control + alt":"~/dotfiles/screenlayouts/homemirror.sh"},"u":{"control + alt":"~/dotfiles/screenlayouts/tutor.sh"},"H":{"control + alt":"~/dotfiles/screenlayouts/homefour.sh"},"Return":{"super":"st"}}')
@@ -33,484 +53,484 @@
         }
     </script>
     <h1>Simple X Hot Key Daemon Keyboard Visualization</h1>
-    <div>
+    <div id="keyboard">
         
         
         <div class="row">
             
-            <button  class="long" 
+            <div class="key qu8" 
             
             >
                 Escape
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 F1
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 F2
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 F3
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 F4
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 F5
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 F6
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 F7
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 F8
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 F9
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 F10
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 F11
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 F12
-            </button>
+            </div>
             
-            <button  class="long" 
+            <div class="key qu8" 
             
             >
                 Home
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 End
-            </button>
+            </div>
             
-            <button  class="long" 
+            <div class="key qu8" 
             
             >
                 Insert
-            </button>
+            </div>
             
-            <button  class="long" 
+            <div class="key qu8" 
             
             >
                 Delete
-            </button>
+            </div>
             
         </div>
         
         <div class="row">
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 `
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 1
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 2
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 3
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 4
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 5
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 6
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 7
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
                 onmousemove="myMoveFunction(this)"
             
             >
                 8
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
                 onmousemove="myMoveFunction(this)"
             
             >
                 9
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 0
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 -
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 =
-            </button>
+            </div>
             
-            <button  class="long" 
+            <div class="key qu8" 
             
             >
                 Backspace
-            </button>
+            </div>
             
         </div>
         
         <div class="row">
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 Tab
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 Q
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 W
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 E
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 R
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 T
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 Y
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 U
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 I
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 O
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 P
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 [
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 ]
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 \
-            </button>
+            </div>
             
         </div>
         
         <div class="row">
             
-            <button  class="long" 
+            <div class="key qu8" 
             
             >
                 Caps
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 A
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 S
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 D
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 F
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 G
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
                 onmousemove="myMoveFunction(this)"
             
             >
                 H
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 J
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 K
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 L
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 ;
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 &#39;
-            </button>
+            </div>
             
-            <button  class="long" 
+            <div class="key qu8" 
             
                 onmousemove="myMoveFunction(this)"
             
             >
                 Return
-            </button>
+            </div>
             
         </div>
         
         <div class="row">
             
-            <button  class="long" 
+            <div class="key qu8" 
             
             >
                 Shift
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 Z
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 X
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 C
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 V
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 B
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 N
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
                 onmousemove="myMoveFunction(this)"
             
             >
                 M
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 ,
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 .
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 /
-            </button>
+            </div>
             
         </div>
         
         <div class="row">
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 Fn
-            </button>
+            </div>
             
-            <button  class="long" 
+            <div class="key qu8" 
             
             >
                 Ctrl
-            </button>
+            </div>
             
-            <button  class="long" 
+            <div class="key qu8" 
             
             >
                 Super
-            </button>
+            </div>
             
-            <button  class="normal" 
+            <div class="key normal" 
             
             >
                 Alt
-            </button>
+            </div>
             
-            <button  class="long" 
+            <div class="key qu8" 
             
             >
                 Space
-            </button>
+            </div>
             
         </div>
         
@@ -520,3 +540,4 @@
 
     </div>
 </body>
+<html>
