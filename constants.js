@@ -7,9 +7,9 @@ module.exports = {
 
     KEYBOARD_KEYS: [
         ["ESCAPE", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "HOME", "END", "INSERT", "DELETE"],
-        ["GRAVE", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "MINUS", "EQUALS", "BACKSPACE"],
+        ["GRAVE", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "MINUS", "EQUAL", "BACKSPACE"],
         ["TAB", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "BRACKETLEFT", "BRACKETRIGHT", "BACKSLASH"],
-        ["CAPS", "A", "S", "D", "F", "G", "H", "J", "K", "L", "SEMICOLON", "APOSTROPHE", "RETURN"],
+        ["CAPS_LOCK", "A", "S", "D", "F", "G", "H", "J", "K", "L", "SEMICOLON", "APOSTROPHE", "RETURN"],
         ["SHIFT", "Z", "X", "C", "V", "B", "N", "M", "COMMA", "PERIOD", "SLASH"],
         ["CTRL", "SUPER", "ALT", "SPACE"]
     ],
@@ -40,7 +40,8 @@ module.exports = {
         SLASH: '/',
         SHIFT: 'Shift',
         CAPS_LOCK: 'Caps',
-        SUPER: 'Super'
+        SUPER: 'Super',
+        BACKSPACE: 'Backspace'
     },
 
     // Width of each key in quarter units, default is 4qu
@@ -48,10 +49,12 @@ module.exports = {
         RETURN: 8,
         ALT: 5,
         CTRL: 5,
+        SUPER: 5,
         SPACE: 25,
         TAB: 6,
         SHIFT: 9, 
-        CAPS_LOCK: 7
+        CAPS_LOCK: 7,
+        BACKSPACE: 8
     },
     tooltips: {
     '8': {

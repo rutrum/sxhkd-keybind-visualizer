@@ -19,7 +19,8 @@ function main() {
         ejs.renderFile('./templates/template.ejs', { 
             rows: constants.KEYBOARD_KEYS, 
             tooltips: constants.tooltips,
-            displaynames: constants.DISPLAY_NAMES
+            displaynames: constants.DISPLAY_NAMES,
+            keywidths: constants.KEY_WIDTH
         }, function (err, html) {
             if (err) { console.log(err) }
             fs.writeFile('./myfile.html', html, (err) => { console.log(err) })

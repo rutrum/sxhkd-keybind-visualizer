@@ -32,9 +32,6 @@
         .key:hover {
             background-color: whitesmoke;
         }
-        .qu8 {
-            width: 82px;
-        }
     </style>
 </head>
 <body>
@@ -49,7 +46,6 @@
                 DIV+="<div>"+JSON.stringify(words)+"</div>"
             })
             holder.innerHTML = DIV
-            console.log("<%=JSON.stringify(tooltips)%>")
         }
     </script>
     <h1>Simple X Hot Key Daemon Keyboard Visualization</h1>
@@ -63,7 +59,7 @@
                 onmousemove="myMoveFunction(this)"
             <% } %>
             >
-                <%= letter %>
+                <%= (letter in displaynames) ? displaynames[letter] : letter %>
             </div>
             <% }) %>
         </div>
