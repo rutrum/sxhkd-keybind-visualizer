@@ -1,5 +1,6 @@
 var fs = require('fs')
 var ejs = require('ejs')
+var util = require('util')
 
 var constants = require('./constants')
 
@@ -14,10 +15,14 @@ function main() {
             console.log("Error opening file at " + file)
             exit(1)
         }
-        keybinds = parse_contents(data)
+
+        keymods = parse_contents(data)
+        //console.log(JSON.stringify(keymods))
 
         ejs.renderFile('./templates/template.ejs', { 
             rows: constants.KEYBOARD_KEYS, 
+            modifiers: keymods.modifiers,
+            keybinds: keymods.keybinds,
             tooltips: constants.tooltips,
             displaynames: constants.DISPLAY_NAMES,
             keywidths: constants.KEY_WIDTH
@@ -33,7 +38,10 @@ function parse_contents(data) {
     let keybinds = sources.map(s => s.into_keybinds()).flat()
 
     let keyfinal = {}
+    let modifiers = new Set()
+
     keybinds.forEach(keybind => {
+        modifiers.add(keybind.modifier)
         if (!(keybind.keysym in keyfinal)) {
             keyfinal[keybind.keysym] = {}
         }
@@ -42,7 +50,7 @@ function parse_contents(data) {
             source: keybind.source
         }
     })
-    return JSON.stringify(keyfinal)
+    return { modifiers: modifiers, keybinds: keyfinal }
 }
 
 // Reads the raw data file and generates a list

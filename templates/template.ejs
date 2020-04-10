@@ -7,16 +7,17 @@
 </head>
 <body>
     <script>
-        var tooltips = JSON.parse('<%- JSON.stringify(tooltips) %>')
+        // <% let str = JSON.stringify(keybinds) %>
+        // var keybinds = JSON.parse('<%- str %>')
+        // console.log(keybinds)
         function myMoveFunction(e) {
-            let hoveredLetter = e.innerHTML.trim()
-            let holder = document.getElementById("tooltipInfoDump")
-            let words = tooltips[hoveredLetter]
-            let DIV = "<h3>"+hoveredLetter+"</h3>"
-            Object.keys(words).forEach((word) => {
-                DIV+="<div>"+JSON.stringify(words)+"</div>"
-            })
-            holder.innerHTML = DIV
+            let hoveredLetter = e.textContent.trim()
+            let words = keybinds[hoveredLetter]
+            //let DIV = "<h3>"+hoveredLetter+"</h3>"
+            //Object.keys(words).forEach((word) => {
+            //    DIV+="<div>"+JSON.stringify(words)+"</div>"
+            //})
+            document.getElementById("tooltipInfoDump").textContent = hoveredLetter 
         }
     </script>
 
@@ -41,21 +42,26 @@
         <% }) %>
     </div>
 
-    <div>
-        <h3 id="key-name">E</h3>
-        <h4 id="command">docker -it exec mysqldb /bin/bash</h4>
-        <h3>Source:</h3>
-        <div class="source">
-            <div>
-                <div class="linenum" id="source-hotkey-num">9</div>
-                <div id="source-hotkey-raw">alt + shift + e</div>
-            </div>
-            <div>
-                <div class="linenum" id="source-command-num">10</div>
-                <div id="source-command-raw">docker -it exec mysqldb /bin/bash</div>
-            </div>
+    <% for (let letter in keybinds) { %>
+        <div class="tooltip">
+            <h1><%= letter %></h1>
+            <% for (let modifier in keybinds[letter]) { %>
+                <% let source = keybinds[letter][modifier].source %>
+                <h2><%= modifier %></h2>
+                <h3><%= keybinds[letter][modifier].command %></h3>
+                <div class="source">
+                    <div>
+                        <div class="linenum"><%= source.hotkey_linenum %></div>
+                        <div><%= source.hotkey %></div>
+                    </div>
+                    <div>
+                        <div class="linenum"><%= source.command_linenum %></div>
+                        <div><%= source.command %></div>
+                    </div>
+                </div>
+            <% } %>
         </div>
-    </div>
+    <% } %>
 
     <div id="tooltipInfoDump">
 
