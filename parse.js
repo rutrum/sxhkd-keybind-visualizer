@@ -37,20 +37,25 @@ function parse_contents(contents) {
     expanded = break_apart(keycommands)
 
     let final = {}
+    let allmodifiers = new Set()
     for (let [key, command] of Object.entries(expanded)) {
+        key = key.replace(/\s/g, "");
         let modifier = "none"
-
-        let plusindex = key.lastIndexOf("+");
-        if (plusindex != -1) {
-            modifier = key.substring(0, plusindex).trim()
-            key = key.substring(plusindex + 1).trim()
+        
+        let colonindex = key.lastIndexOf(":")
+        let plusindex = key.lastIndexOf("+")
+        let lastindex = colonindex > plusindex ? colonindex : plusindex;
+        if (lastindex != -1) {
+            modifier = key.substring(0, lastindex).trim()
+            key = key.substring(lastindex + 1).trim()
         }
+        allmodifiers.add(modifier)
         if (!final[key]) {
             final[key] = {}
         }
         final[key][modifier] = command
     }
-    return final
+    return { modifiers: allmodifiers, hotkeys: final }
 }
 
 function break_apart(keycommands) {
@@ -83,7 +88,7 @@ function expand_string(str) {
                 bounds = x.split("-")
                 digits = []
                 for (let i = bounds[0]; i <= bounds[1]; i++) {
-                    digits.push(i)
+                    digits.push()
                 }
                 return digits
             } else {
