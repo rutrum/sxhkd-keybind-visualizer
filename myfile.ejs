@@ -23,10 +23,12 @@
         function myMoveFunction(e) {
             let hoveredLetter = e.innerHTML.trim()
             let holder = document.getElementById("tooltipInfoDump")
-            console.log(holder)
             let words = tooltips[hoveredLetter]
-            console.log(words)
-            holder.innerHTML = words
+            let DIV = "<h3>"+hoveredLetter+"</h3>"
+            Object.keys(words).forEach((word) => {
+                DIV+="<div>"+JSON.stringify(words)+"</div>"
+            })
+            holder.innerHTML = DIV
             console.log("<%=JSON.stringify(tooltips)%>")
         }
     </script>

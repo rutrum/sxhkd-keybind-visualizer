@@ -19,15 +19,17 @@
 
 <body>
     <script>
-        var tooltips = JSON.parse('{"A":"Mute Discord","H":"Focus Left Window"}')
+        var tooltips = JSON.parse('{"8":{"super":"bspc desktop -f 8","super + shift":"bspc node -d 8","super + ctrl":"bspc node -o 0.8"},"9":{"super":"bspc desktop -f 9","super + shift":"bspc node -d 9","super + ctrl":"bspc node -o 0.9"},"f":{"control + alt":"~/dotfiles/screenlayouts/148.sh","super":"bspc node -t ~fullscreen"},"g":{"control + alt":"~/dotfiles/screenlayouts/laptop.sh","super":"bspc node -s biggest"},"t":{"control + alt":"~/dotfiles/screenlayouts/homethree.sh","super":"bspc node -t tiled","super + shift":"bspc node -t pseudo_tiled"},"M":{"control + alt":"~/dotfiles/screenlayouts/homemirror.sh"},"u":{"control + alt":"~/dotfiles/screenlayouts/tutor.sh"},"H":{"control + alt":"~/dotfiles/screenlayouts/homefour.sh"},"Return":{"super":"st"}}')
         function myMoveFunction(e) {
             let hoveredLetter = e.innerHTML.trim()
             let holder = document.getElementById("tooltipInfoDump")
-            console.log(holder)
             let words = tooltips[hoveredLetter]
-            console.log(words)
-            holder.innerHTML = words
-            console.log("{&#34;A&#34;:&#34;Mute Discord&#34;,&#34;H&#34;:&#34;Focus Left Window&#34;}")
+            let DIV = "<h3>"+hoveredLetter+"</h3>"
+            Object.keys(words).forEach((word) => {
+                DIV+="<div>"+JSON.stringify(words)+"</div>"
+            })
+            holder.innerHTML = DIV
+            console.log("{&#34;8&#34;:{&#34;super&#34;:&#34;bspc desktop -f 8&#34;,&#34;super + shift&#34;:&#34;bspc node -d 8&#34;,&#34;super + ctrl&#34;:&#34;bspc node -o 0.8&#34;},&#34;9&#34;:{&#34;super&#34;:&#34;bspc desktop -f 9&#34;,&#34;super + shift&#34;:&#34;bspc node -d 9&#34;,&#34;super + ctrl&#34;:&#34;bspc node -o 0.9&#34;},&#34;f&#34;:{&#34;control + alt&#34;:&#34;~/dotfiles/screenlayouts/148.sh&#34;,&#34;super&#34;:&#34;bspc node -t ~fullscreen&#34;},&#34;g&#34;:{&#34;control + alt&#34;:&#34;~/dotfiles/screenlayouts/laptop.sh&#34;,&#34;super&#34;:&#34;bspc node -s biggest&#34;},&#34;t&#34;:{&#34;control + alt&#34;:&#34;~/dotfiles/screenlayouts/homethree.sh&#34;,&#34;super&#34;:&#34;bspc node -t tiled&#34;,&#34;super + shift&#34;:&#34;bspc node -t pseudo_tiled&#34;},&#34;M&#34;:{&#34;control + alt&#34;:&#34;~/dotfiles/screenlayouts/homemirror.sh&#34;},&#34;u&#34;:{&#34;control + alt&#34;:&#34;~/dotfiles/screenlayouts/tutor.sh&#34;},&#34;H&#34;:{&#34;control + alt&#34;:&#34;~/dotfiles/screenlayouts/homefour.sh&#34;},&#34;Return&#34;:{&#34;super&#34;:&#34;st&#34;}}")
         }
     </script>
     <h1>Simple X Hot Key Daemon Keyboard Visualization</h1>
@@ -192,11 +194,15 @@
             
             <button  class="normal" 
             
+                onmousemove="myMoveFunction(this)"
+            
             >
                 8
             </button>
             
             <button  class="normal" 
+            
+                onmousemove="myMoveFunction(this)"
             
             >
                 9
@@ -326,8 +332,6 @@
             
             <button  class="normal" 
             
-                onmousemove="myMoveFunction(this)"
-            
             >
                 A
             </button>
@@ -396,6 +400,8 @@
             
             <button  class="long" 
             
+                onmousemove="myMoveFunction(this)"
+            
             >
                 Return
             </button>
@@ -447,6 +453,8 @@
             </button>
             
             <button  class="normal" 
+            
+                onmousemove="myMoveFunction(this)"
             
             >
                 M
