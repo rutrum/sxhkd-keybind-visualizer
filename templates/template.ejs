@@ -1,7 +1,7 @@
 <!DOCTYPE="html">
 <html>
 <head>
-    <title>Keyboard</title>
+    <title>sxhkd Keybinds</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
@@ -12,17 +12,28 @@
             flex-wrap: wrap;
         }
         .key {
-            font-size: 20px;
-            line-height: 40px;
-            height: 40px;
-            width: 40px;
+            box-sizing: border-box;
+            font-size: 18px;
+            line-height: 44px;
+            height: 44px;
+            width: 44px;
             overflow: hidden;
             background-color: lightgrey;
-            margin: 1px;
+            border: 1px solid white;
             text-align: center;
         }
         .key:hover {
             background-color: whitesmoke;
+        }
+        .source {
+            font-family: "courier new";
+        }
+        .source div {
+            display: flex;
+            justify-content: flex-left;
+        }
+        .linenum {
+            width: 50px;
         }
     </style>
 </head>
@@ -53,7 +64,7 @@
                 onmousemove="myMoveFunction(this)"
             <% } %>
             <% if (letter in keywidths) { %>
-                style="width: <%= keywidths[letter] * 9 %>"
+                style="width: <%= keywidths[letter] * 11%>"
             <% } %>
             >
                 <%= (letter in displaynames) ? displaynames[letter] : letter %>
@@ -61,6 +72,22 @@
             <% }) %>
         </div>
         <% }) %>
+    </div>
+
+    <div>
+        <h3 id="key-name">E</h3>
+        <h4 id="command">docker -it exec mysqldb /bin/bash</h4>
+        <h3>Source:</h3>
+        <div class="source">
+            <div>
+                <div class="linenum" id="source-hotkey-num">9</div>
+                <div id="source-hotkey-raw">alt + shift + e</div>
+            </div>
+            <div>
+                <div class="linenum" id="source-command-num">10</div>
+                <div id="source-command-raw">docker -it exec mysqldb /bin/bash</div>
+            </div>
+        </div>
     </div>
 
     <div id="tooltipInfoDump">

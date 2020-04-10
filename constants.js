@@ -46,7 +46,8 @@ module.exports = {
 
     // Width of each key in quarter units, default is 4qu
     KEY_WIDTH: {
-        RETURN: 8,
+        RETURN: 9,
+        BACKSLASH: 6,
         ALT: 5,
         CTRL: 5,
         SUPER: 5,
