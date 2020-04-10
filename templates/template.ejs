@@ -3,39 +3,7 @@
 <head>
     <title>sxhkd Keybinds</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: "Open Sans", sans-serif;
-        }
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .key {
-            box-sizing: border-box;
-            font-size: 18px;
-            line-height: 44px;
-            height: 44px;
-            width: 44px;
-            overflow: hidden;
-            background-color: lightgrey;
-            border: 1px solid white;
-            text-align: center;
-        }
-        .key:hover {
-            background-color: whitesmoke;
-        }
-        .source {
-            font-family: "courier new";
-        }
-        .source div {
-            display: flex;
-            justify-content: flex-left;
-        }
-        .linenum {
-            width: 50px;
-        }
-    </style>
+    <%- include("style") %>
 </head>
 <body>
     <script>
@@ -55,7 +23,6 @@
     <h1>Simple X Hot Key Daemon Keyboard Visualization</h1>
 
     <div id="keyboard">
-        <% console.log(rows) %>
         <% rows.forEach( row => { %>
         <div class="row">
             <% row.forEach( letter => { %>

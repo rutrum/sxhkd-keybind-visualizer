@@ -23,7 +23,7 @@ function main() {
             keywidths: constants.KEY_WIDTH
         }, function (err, html) {
             if (err) { console.log(err) }
-            fs.writeFile('./myfile.html', html, (err) => { console.log(err) })
+            fs.writeFile('./myfile.html', html, (err) => { if (err) console.log(err) })
         });
     })
 }
