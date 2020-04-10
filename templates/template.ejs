@@ -13,13 +13,13 @@
         <% rows.forEach( row => { %>
         <div class="row">
             <% row.forEach( letter => { %>
-            <div class="key" id="key-<%=letter%>"
-            <% if (letter in keywidths) { %>
-                style="width: <%= keywidths[letter] * 11%>"
-            <% } %>
-            >
-                <%= (letter in displaynames) ? displaynames[letter] : letter %>
-            </div>
+                <div class="key <%= (letter in keybinds) ? 'bound': '' %>" id="key-<%=letter%>"
+                    <% if (letter in keywidths) { %>
+                        style="width: <%= keywidths[letter] * 11%>"
+                    <% } %>
+                >
+                    <%= (letter in displaynames) ? displaynames[letter] : letter %>
+                </div>
             <% }) %>
         </div>
         <% }) %>
@@ -48,7 +48,6 @@
 
     <script>
         <% for (let letter in keybinds) { %>
-        <% console.log(letter) %>
             document.getElementById('key-<%=letter%>').onmouseover = function(){
                 document.getElementById('tooltip-<%=letter%>').style.display = "block";
             }
