@@ -1,11 +1,8 @@
 var fs = require('fs')
-var MODIFIERS = [
-    "SUPER", "HYPER", "META", "ALT", "CONTROL", "CTRL",
-    "SHIFT", "MODE_SWITCH", "LOCK", "MOD1", "MOD2",
-    "MOD3", "MOD4", "MOD5", "ANY"
-]
+var ejs = require('ejs')
 
-// Opens file and begins to parse contents
+var constants = require('./constants')
+
 function main() {
     let filename = process.env.HOME + "/.config/sxhkd/sxhkdrc"
     if (process.argv.length > 2) {
@@ -17,7 +14,16 @@ function main() {
             console.log("Error opening file at " + file)
             exit(1)
         }
-        console.log(parse_contents(data))
+        keybinds = parse_contents(data)
+
+        ejs.renderFile('./templates/template.ejs', { 
+            rows: constants.KEYBOARD_KEYS, 
+            tooltips: constants.tooltips,
+            displaynames: constants.DISPLAY_NAMES
+        }, function (err, html) {
+            if (err) { console.log(err) }
+            fs.writeFile('./myfile.html', html, (err) => { console.log(err) })
+        });
     })
 }
 
@@ -167,7 +173,7 @@ class KeyBind {
     clean_modifier(modifier) {
         return modifier.split(":").map(chord => {
             let mods = chord.split("+")
-            if (mods[mods.length - 1] in MODIFIERS) {
+            if (mods[mods.length - 1] in constants.MODIFIERS) {
                 return mods.sort().join("+")
             } else {
                 let last = mods.pop()
