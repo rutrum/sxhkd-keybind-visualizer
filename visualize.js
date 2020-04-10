@@ -50,6 +50,7 @@ function parse_contents(data) {
             source: keybind.source
         }
     })
+
     return { modifiers: modifiers, keybinds: keyfinal }
 }
 
@@ -175,6 +176,12 @@ class KeyBind {
         } else {
             this.modifier = "NONE" 
             this.keysym = hotkey
+        }
+
+        this.on_release = false
+        if (this.keysym[0] == "@") {
+            this.keysym = this.keysym.substring(1)
+            this.on_release = true
         }
     }
 

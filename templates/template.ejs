@@ -48,6 +48,7 @@
 
     <script>
         <% for (let letter in keybinds) { %>
+        <% console.log(letter) %>
             document.getElementById('key-<%=letter%>').onmouseover = function(){
                 document.getElementById('tooltip-<%=letter%>').style.display = "block";
             }
