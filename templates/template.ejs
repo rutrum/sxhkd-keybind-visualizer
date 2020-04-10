@@ -6,20 +6,6 @@
     <%- include("style") %>
 </head>
 <body>
-    <script>
-        // <% let str = JSON.stringify(keybinds) %>
-        // var keybinds = JSON.parse('<%- str %>')
-        // console.log(keybinds)
-        function myMoveFunction(e) {
-            let hoveredLetter = e.textContent.trim()
-            let words = keybinds[hoveredLetter]
-            //let DIV = "<h3>"+hoveredLetter+"</h3>"
-            //Object.keys(words).forEach((word) => {
-            //    DIV+="<div>"+JSON.stringify(words)+"</div>"
-            //})
-            document.getElementById("tooltipInfoDump").textContent = hoveredLetter 
-        }
-    </script>
 
     <h1>Simple X Hot Key Daemon Keyboard Visualization</h1>
 
@@ -27,10 +13,7 @@
         <% rows.forEach( row => { %>
         <div class="row">
             <% row.forEach( letter => { %>
-            <div class="key <%= (letter.length>=4) ? 'qu8' : 'normal'%>" 
-            <% if(tooltips.hasOwnProperty(letter)){ %>
-                onmousemove="myMoveFunction(this)"
-            <% } %>
+            <div class="key" id="key-<%=letter%>"
             <% if (letter in keywidths) { %>
                 style="width: <%= keywidths[letter] * 11%>"
             <% } %>
@@ -43,7 +26,7 @@
     </div>
 
     <% for (let letter in keybinds) { %>
-        <div class="tooltip">
+        <div id="tooltip-<%= letter %>" class="tooltip">
             <h1><%= letter %></h1>
             <% for (let modifier in keybinds[letter]) { %>
                 <% let source = keybinds[letter][modifier].source %>
@@ -63,8 +46,16 @@
         </div>
     <% } %>
 
-    <div id="tooltipInfoDump">
-
+    <script>
+        <% for (let letter in keybinds) { %>
+            document.getElementById('key-<%=letter%>').onmouseover = function(){
+                document.getElementById('tooltip-<%=letter%>').style.display = "block";
+            }
+            document.getElementById('key-<%=letter%>').onmouseout = function(){
+                document.getElementById('tooltip-<%=letter%>').style.display = "none";
+            }
+        <% } %>
+    </script>
     </div>
 </body>
 <html>
