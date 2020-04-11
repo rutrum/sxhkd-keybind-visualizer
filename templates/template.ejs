@@ -28,9 +28,9 @@
         <% }) %>
     </div>
 
-    <div id="modifiers" class="row"> 
+    <div id="modifiers" class="row" > 
         <% modifiers.forEach(modifier => { %>
-            <input type="radio" name="modifier" value="<%= modifier %>">
+            <input type="radio" name="modifier" onchange="modifierSelectionChanged()" value="<%= modifier %>">
                 <%= modifier %>
             </input>
         <% }) %>
@@ -58,6 +58,18 @@
     <% } %>
 
     <script>
+        function modifierSelectionChanged() {
+            let selectedModifier = document.querySelector("input[name='modifier']:checked").value
+            var allKeys = document.getElementsByClassName("key")
+            for(var i = 0; i < allKeys.length; i++){
+               allKeys[i].classList.remove("bound")
+            }
+            var boundKeys = document.getElementsByClassName(selectedModifier)
+            for(var i = 0; i < boundKeys.length; i++){
+               boundKeys[i].classList.add("bound")
+            }            
+        }
+
         <% for (let letter in keybinds) { %>
             document.getElementById('key-<%=letter%>').onmouseover = function(){
                 let mod = document.querySelector("input[name='modifier']:checked").value
