@@ -17,7 +17,7 @@ function main() {
         }
 
         keymods = parse_contents(data)
-        //console.log(JSON.stringify(keymods))
+        console.log(JSON.stringify(keymods))
 
         ejs.renderFile('./templates/template.ejs', { 
             rows: constants.KEYBOARD_KEYS, 
@@ -49,7 +49,6 @@ function parse_contents(data) {
             source: keybind.source
         }
     })
-    console.log(keybinds)
 
     return { modifiers: Array.from(modifiers).sort(), keybinds: keyfinal }
 }
