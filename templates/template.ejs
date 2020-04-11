@@ -30,7 +30,7 @@
 
     <div id="modifiers" class="row"> 
         <% modifiers.forEach(modifier => { %>
-            <input type="radio" name="modifier">
+            <input type="radio" name="modifier" value="<%= modifier %>">
                 <%= modifier %>
             </input>
         <% }) %>
@@ -38,7 +38,7 @@
 
     <% for (let letter in keybinds) { %>
         <% for (let modifier in keybinds[letter]) { %>
-            <div id="tooltip-<%= letter %>" class="tooltip">
+            <div id="tooltip-<%= modifier.replace('+', '') %>-<%= letter %>" class="tooltip">
                 <h1><%= letter %></h1>
                 <% let source = keybinds[letter][modifier].source %>
                 <h2><%= modifier %></h2>
@@ -60,10 +60,20 @@
     <script>
         <% for (let letter in keybinds) { %>
             document.getElementById('key-<%=letter%>').onmouseover = function(){
-                document.getElementById('tooltip-<%=letter%>').style.display = "block";
+                let mod = document.querySelector("input[name='modifier']:checked").value
+                    .replace("+", "")
+                let element = document.querySelector("#tooltip-" + mod + "-<%=letter%>")
+                if (element != undefined) {
+                    element.style.display = "block"
+                }
             }
             document.getElementById('key-<%=letter%>').onmouseout = function(){
-                document.getElementById('tooltip-<%=letter%>').style.display = "none";
+                let mod = document.querySelector("input[name='modifier']:checked").value
+                    .replace("+", "")
+                let element = document.querySelector("#tooltip-" + mod + "-<%=letter%>")
+                if (element != undefined) {
+                    element.style.display = "none"
+                }
             }
         <% } %>
     </script>
