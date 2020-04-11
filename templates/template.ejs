@@ -45,6 +45,10 @@
                 <h3><%= keybinds[letter][modifier].command %></h3>
                 <div class="source">
                     <div>
+                        <div class="linenum"><%= source.comment_linenum %></div>
+                        <div><%= source.comment %></div>
+                    </div>
+                    <div>
                         <div class="linenum"><%= source.hotkey_linenum %></div>
                         <div><%= source.hotkey %></div>
                     </div>

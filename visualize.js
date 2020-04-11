@@ -59,6 +59,8 @@ function into_keybindsources(raw) {
 
     let last_keybind = ""
     let last_keybind_index = 0
+    let last_comment = ""
+    let last_comment_index = 0
     let last_command = ""
 
     for (const [index, line] of raw.split("\n").entries()) {
@@ -76,13 +78,16 @@ function into_keybindsources(raw) {
                 last_command += line + "\n"
             } else {
                 let source = new KeyBindSource(
-                    last_keybind, last_command + line, last_keybind_index, index
+                    last_comment, last_keybind, last_command + line, last_comment_index, last_keybind_index, index
                 )
                 sources.push(source)
                 last_command = ""
             }
 
-        } else if (start != "#") {
+        } else if (start == "#") {
+            last_comment = line
+            last_comment_index = index
+        } else {
             last_keybind = line
             last_keybind_index = index
         }
@@ -94,9 +99,11 @@ function into_keybindsources(raw) {
 // Stores information about the keybind in the config file
 class KeyBindSource {
 
-    constructor(hotkey, command, hotkey_linenum, command_linenum) {
+    constructor(comment, hotkey, command, comment_linenum, hotkey_linenum, command_linenum) {
+        this.comment = comment
         this.hotkey = hotkey
         this.command = command
+        this.command_linenum = hotkey_linenum
         this.hotkey_linenum = hotkey_linenum
         this.command_linenum = command_linenum
     }
