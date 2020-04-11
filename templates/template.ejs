@@ -38,7 +38,7 @@
 
     <% for (let letter in keybinds) { %>
         <% for (let modifier in keybinds[letter]) { %>
-            <div id="tooltip-<%= modifier.replace('+', '') %>-<%= letter %>" class="tooltip">
+            <div id="tooltip-<%= modifier.replace(/\+/g, '') %>-<%= letter %>" class="tooltip">
                 <h1><%= letter %></h1>
                 <% let source = keybinds[letter][modifier].source %>
                 <h2><%= modifier %></h2>
@@ -69,7 +69,8 @@
                boundKeys[i].classList.add("bound")
             }            
         }
-
+        
+        document.querySelector("input[name='modifier']").checked = true
         modifierSelectionChanged()
 
         <% for (let letter in keybinds) { %>

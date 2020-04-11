@@ -17,7 +17,6 @@ function main() {
         }
 
         keymods = parse_contents(data)
-        console.log(JSON.stringify(keymods))
 
         ejs.renderFile('./templates/template.ejs', { 
             rows: constants.KEYBOARD_KEYS, 
@@ -188,7 +187,7 @@ class KeyBind {
     clean_modifier(modifier) {
         return modifier.split(":").map(chord => {
             let mods = chord.split("+")
-            if (mods[mods.length - 1] in constants.MODIFIERS) {
+            if (constants.MODIFIERS.includes(mods[mods.length - 1])) {
                 return mods.sort().join("+")
             } else {
                 let last = mods.pop()
