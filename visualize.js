@@ -23,7 +23,6 @@ function main() {
             rows: constants.KEYBOARD_KEYS, 
             modifiers: keymods.modifiers,
             keybinds: keymods.keybinds,
-            tooltips: constants.tooltips,
             displaynames: constants.DISPLAY_NAMES,
             keywidths: constants.KEY_WIDTH
         }, function (err, html) {

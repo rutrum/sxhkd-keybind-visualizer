@@ -11,24 +11,32 @@
 
     <div id="keyboard">
         <% rows.forEach( row => { %>
-        <div class="row">
-            <% row.forEach( letter => { %>
-                <div class="key <%= (letter in keybinds) ? 'bound': '' %>" id="key-<%=letter%>"
-                    <% if (letter in keywidths) { %>
-                        style="width: <%= keywidths[letter] * 11%>"
-                    <% } %>
-                >
-                    <%= (letter in displaynames) ? displaynames[letter] : letter %>
-                </div>
-            <% }) %>
-        </div>
+            <div class="row">
+                <% row.forEach( letter => { %>
+                    <div class="key <%= (letter in keybinds) ? 'bound': '' %>" id="key-<%=letter%>"
+                        <% if (letter in keywidths) { %>
+                            style="width: <%= keywidths[letter] * 11%>"
+                        <% } %>
+                    >
+                        <%= (letter in displaynames) ? displaynames[letter] : letter %>
+                    </div>
+                <% }) %>
+            </div>
+        <% }) %>
+    </div>
+
+    <div id="modifiers" class="row"> 
+        <% modifiers.forEach(modifier => { %>
+            <input type="radio" name="modifier">
+                <%= modifier %>
+            </input>
         <% }) %>
     </div>
 
     <% for (let letter in keybinds) { %>
-        <div id="tooltip-<%= letter %>" class="tooltip">
-            <h1><%= letter %></h1>
-            <% for (let modifier in keybinds[letter]) { %>
+        <% for (let modifier in keybinds[letter]) { %>
+            <div id="tooltip-<%= letter %>" class="tooltip">
+                <h1><%= letter %></h1>
                 <% let source = keybinds[letter][modifier].source %>
                 <h2><%= modifier %></h2>
                 <h3><%= keybinds[letter][modifier].command %></h3>
@@ -42,8 +50,8 @@
                         <div><%= source.command %></div>
                     </div>
                 </div>
-            <% } %>
-        </div>
+            </div>
+        <% } %>
     <% } %>
 
     <script>
