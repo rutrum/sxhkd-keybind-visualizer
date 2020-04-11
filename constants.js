@@ -6,12 +6,12 @@ module.exports = {
     ],
 
     KEYBOARD_KEYS: [
-        ["ESCAPE", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "HOME", "END", "INSERT", "DELETE"],
+        ["ESCAPE", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "HOME", "END", "INSERT", "DELETE", "PRINT"],
         ["GRAVE", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "MINUS", "EQUAL", "BACKSPACE"],
         ["TAB", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "BRACKETLEFT", "BRACKETRIGHT", "BACKSLASH"],
         ["CAPS_LOCK", "A", "S", "D", "F", "G", "H", "J", "K", "L", "SEMICOLON", "APOSTROPHE", "RETURN"],
-        ["SHIFT", "Z", "X", "C", "V", "B", "N", "M", "COMMA", "PERIOD", "SLASH"],
-        ["CTRL", "SUPER", "ALT", "SPACE"]
+        ["SHIFT", "Z", "X", "C", "V", "B", "N", "M", "COMMA", "PERIOD", "SLASH", "SHIFT", "UP"],
+        ["CTRL", "SUPER", "ALT", "SPACE", "ALT", "SUPER", "CTRL", "LEFT", "DOWN", "RIGHT"]
     ],
 
     // Default, the keysym name is the display name
@@ -41,7 +41,12 @@ module.exports = {
         SHIFT: 'Shift',
         CAPS_LOCK: 'Caps',
         SUPER: 'Super',
-        BACKSPACE: 'Backspace'
+        BACKSPACE: 'Backspace',
+        PRINT: 'Prt',
+        UP: '↑',
+        DOWN: '↓',
+        LEFT: '←',
+        RIGHT: '→'
     },
 
     // Width of each key in quarter units, default is 4qu
