@@ -51,7 +51,7 @@ function parse_contents(data) {
         }
     })
 
-    return { modifiers: modifiers, keybinds: keyfinal }
+    return { modifiers: Array.from(modifiers).sort(), keybinds: keyfinal }
 }
 
 // Reads the raw data file and generates a list
@@ -135,9 +135,8 @@ class KeyBindSource {
                     let bounds = x.split("-")
                     let digits = []
                     for (let i = bounds[0]; i <= bounds[1]; i++) {
-                        digits.push()
+                        digits.push(i)
                     }
-                    return digits
                 } else {
                     return x
                 }
