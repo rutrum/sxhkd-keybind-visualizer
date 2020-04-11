@@ -14,6 +14,36 @@ module.exports = {
         ["CTRL", "SUPER", "ALT", "SPACE", "ALT", "SUPER", "CTRL", "LEFT", "DOWN", "RIGHT"]
     ],
 
+    NAVIGATION_KEYS: [
+        ["INSERT", "HOME", "PAGEUP"],
+        ["DELETE", "END", "PAGEDOWN"]
+    ],
+
+    ARROW_KEYS: [
+        ["UP"],
+        ["LEFT", "DOWN", "RIGHT"]
+    ],
+
+    NUMPAD_KEYS: [
+        ["NUM_LOCK", "KP_DIVIDE", "KP_MULTIPLY", "KP_SUBTRACT"],
+        ["KP_7", "KP_8", "KP_9", "KP_ADD"],
+        ["KP_4", "KP_5", "KP_6", "KP_ADD"],
+        ["KP_1", "KP_2", "KP_3", "KP_ENTER"],
+        ["KP_0", "KP_DECIMAL", "KP_ENTER"]
+    ],
+
+    FROW_KEYS: [
+        ["ESCAPE", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "PRINT", "SCROLL_LOCK", "PAUSE"]
+    ],
+
+    MAIN_KEYS: [
+        ["GRAVE", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "MINUS", "EQUAL", "BACKSPACE"],
+        ["TAB", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "BRACKETLEFT", "BRACKETRIGHT", "BACKSLASH"],
+        ["CAPS_LOCK", "A", "S", "D", "F", "G", "H", "J", "K", "L", "SEMICOLON", "APOSTROPHE", "RETURN"],
+        ["SHIFT", "Z", "X", "C", "V", "B", "N", "M", "COMMA", "PERIOD", "SLASH", "SHIFT", "UP"],
+        ["CTRL", "SUPER", "ALT", "SPACE", "ALT", "SUPER", "CTRL", "LEFT", "DOWN", "RIGHT"]
+    ],
+
     // Default, the keysym name is the display name
     DISPLAY_NAMES: {
         RETURN: 'Enter',

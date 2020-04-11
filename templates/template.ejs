@@ -70,6 +70,8 @@
             }            
         }
 
+        modifierSelectionChanged()
+
         <% for (let letter in keybinds) { %>
             document.getElementById('key-<%=letter%>').onmouseover = function(){
                 let mod = document.querySelector("input[name='modifier']:checked").value
