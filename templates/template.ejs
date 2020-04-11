@@ -13,7 +13,10 @@
         <% rows.forEach( row => { %>
             <div class="row">
                 <% row.forEach( letter => { %>
-                    <div class="key <%= (letter in keybinds) ? 'bound': '' %>" id="key-<%=letter%>"
+                    <% let modifierList = "" %>
+                    <% for (let modifier in keybinds[letter]) {modifierList+=modifier+" "} %>
+                    <div class="key <%= (letter in keybinds) ? 'bound': '' %> <%= modifierList %>" 
+                        id="key-<%=letter%>"
                         <% if (letter in keywidths) { %>
                             style="width: <%= keywidths[letter] * 11%>"
                         <% } %>
