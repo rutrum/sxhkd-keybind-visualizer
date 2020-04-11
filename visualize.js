@@ -49,6 +49,7 @@ function parse_contents(data) {
             source: keybind.source
         }
     })
+    console.log(keybinds)
 
     return { modifiers: Array.from(modifiers).sort(), keybinds: keyfinal }
 }
@@ -136,6 +137,7 @@ class KeyBindSource {
                     for (let i = bounds[0]; i <= bounds[1]; i++) {
                         digits.push(i)
                     }
+                    return digits
                 } else {
                     return x
                 }
